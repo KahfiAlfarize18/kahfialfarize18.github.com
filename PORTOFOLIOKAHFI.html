@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journey of Kahfi Alfarize</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f8f9fa;
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .hero-section {
+            background: linear-gradient(120deg, #0d6efd 60%, #fff 100%);
+            color: #fff;
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #0d6efd;
+        }
+
+        .about-me,
+        .projects,
+        .contact {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            padding: 32px 24px;
+            margin-bottom: 32px;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skills-list li {
+            display: inline-block;
+            background: #e9ecef;
+            color: #0d6efd;
+            border-radius: 20px;
+            padding: 6px 16px;
+            margin: 4px 6px 4px 0;
+            font-size: 0.95rem;
+        }
+
+        .contact a {
+            color: #0d6efd;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 767px) {
+            .hero-section {
+                padding: 40px 0 24px 0;
+            }
+
+            .about-me,
+            .projects,
+            .contact {
+                padding: 20px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Journey of Kahfi Alfarize</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav small">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Project</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slideshow (Carousel) -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80"
+                    class="d-block w-100" alt="Programming" style="max-height: 400px; object-fit: cover;">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80"
+                    class="d-block w-100" alt="Laptop Coding" style="max-height: 400px; object-fit: cover;">
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80"
+                    class="d-block w-100" alt="Tech Devices" style="max-height: 400px; object-fit: cover;">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1>Kahfi Alfarize</h1>
+            <p>Selamat Datang di Portofolio Pribadi Saya</p>
+        </div>
+    </section>
+
+    <div class="container my-5">
+        <!-- Projects Section -->
+        <section id="projects" class="projects mb-5">
+            <h2 class="section-title">Project</h2>
+            <ul>
+                <li>Web CV</li>
+                <li>Web Toko Online</li>
+                <li>Beberapa Mini Project (ON PROGRESS)</li>
+            </ul>
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about" class="about-me mb-5">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                Haloo Nama saya Kahfi Alfarize, lahir pada tanggal 18 Februari 2006. Di usia saya saat ini, saya adalah
+                mahasiswa semester 2 di STTI Tanjungpinang. Saya memiliki pengalaman di bidang Telekomunikasi, Mempunyai
+                pengalaman Praktik Kerja Lapangan di Kantor TELKOM INDONESIA (INDIHOME) sebagai teknisi maintenance.
+                Saya memiliki minat dan bakat di bidang pemasaran. Misi pribadi saya adalah menjadi seorang profesional
+                programmer sesuai dengan jurusan saya sekarang. Minat Bakat saya sangat tinggi terhadap dunia teknologi,
+                terutama dalam bidang software. Saya sangat menyukai tantangan dan selalu berusaha untuk belajar hal-hal
+                baru yang dapat meningkatkan kemampuan saya.
+            </p>
+            <p>
+                Skill saya dalam bidang software adalah:
+            </p>
+            <ul class="skills-list">
+                <li>Microsoft Word</li>
+                <li>Excel</li>
+                <li>Access</li>
+                <li>Aplikasi coding lainnya</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact mb-5">
+            <h2 class="section-title">Contact</h2>
+            <ul class="list-unstyled">
+                <li>
+                    <strong>Instagram:</strong>
+                    <a href="https://instagram.com/kahfialfarize" target="_blank">@kahfialfarize</a>
+                </li>
+                <li>
+                    <strong>Email:</strong>
+                    <a href="mailto:kahfialfarize18@gmail.com">kahfialfarize18@gmail.com</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
