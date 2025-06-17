@@ -1,0 +1,1212 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.A HOME BILLIARD - Booking & Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Russo+One:wght@400&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #198754;
+            --dark-green: #145c38;
+            --light-green: #d4edda;
+            --gold: #ffd700;
+            --dark-bg: rgba(0, 0, 0, 0.8);
+            --glass-bg: rgba(255, 255, 255, 0.95);
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f4c3a 0%, #1a5d4a 50%, #0f4c3a 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(25, 135, 84, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(25, 135, 84, 0.2) 0%, transparent 50%);
+            z-index: -1;
+            animation: backgroundPulse 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundPulse {
+            0% {
+                opacity: 0.3;
+            }
+
+            100% {
+                opacity: 0.6;
+            }
+        }
+
+        /* Floating Billiard Balls Animation */
+        .floating-balls {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ball {
+            position: absolute;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.1;
+        }
+
+        .ball-1 {
+            width: 40px;
+            height: 40px;
+            background: #ff4444;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .ball-2 {
+            width: 30px;
+            height: 30px;
+            background: #4444ff;
+            top: 20%;
+            right: 15%;
+            animation-delay: 1s;
+        }
+
+        .ball-3 {
+            width: 35px;
+            height: 35px;
+            background: #ffff44;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 2s;
+        }
+
+        .ball-4 {
+            width: 45px;
+            height: 45px;
+            background: #44ff44;
+            bottom: 30%;
+            right: 25%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+
+            50% {
+                transform: translateY(-40px) rotate(180deg);
+            }
+
+            75% {
+                transform: translateY(-20px) rotate(270deg);
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--glass-bg) !important;
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow-soft);
+            border-bottom: 1px solid rgba(25, 135, 84, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-family: 'Russo One', sans-serif;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: var(--primary-green) !important;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            color: var(--dark-green) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+            position: relative;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, var(--primary-green), var(--gold));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-green) !important;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: var(--dark-bg);
+            backdrop-filter: blur(10px);
+            color: #fff;
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 50px;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(25, 135, 84, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .hero-section h1 {
+            font-family: 'Russo One', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #fff, var(--gold), #fff);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        /* Carousel */
+        #billiardCarousel {
+            max-width: 900px;
+            margin: 50px auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: var(--shadow-hover);
+            position: relative;
+        }
+
+        #billiardCarousel::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-green), var(--gold), var(--primary-green));
+            border-radius: 27px;
+            z-index: -1;
+            animation: borderGlow 2s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0.5;
+            }
+        }
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 450px;
+            width: 100%;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            filter: brightness(0.8) contrast(1.1);
+        }
+
+        .carousel-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(1) contrast(1.2);
+        }
+
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.7) !important;
+            backdrop-filter: blur(10px);
+            border-radius: 15px !important;
+            padding: 20px !important;
+            border: 2px solid rgba(25, 135, 84, 0.3);
+        }
+
+        .carousel-indicators [data-bs-target] {
+            background-color: var(--gold);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-indicators [data-bs-target].active {
+            background-color: var(--primary-green);
+            transform: scale(1.3);
+        }
+
+        /* Section Styling */
+        .section-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: var(--shadow-soft);
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(25, 135, 84, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(25, 135, 84, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .section-card:hover::before {
+            left: 100%;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .section-title {
+            color: var(--primary-green);
+            margin-bottom: 30px;
+            font-family: 'Russo One', sans-serif;
+            font-size: 2.2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--gold));
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* Form Styling */
+        .form-control {
+            border: 2px solid rgba(25, 135, 84, 0.2);
+            border-radius: 15px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Button Styling */
+        .billiard-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .billiard-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .billiard-btn:hover::before {
+            left: 100%;
+        }
+
+        .billiard-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: var(--shadow-hover);
+            color: #fff;
+        }
+
+        .billiard-icon {
+            width: 24px;
+            height: 24px;
+            transition: transform 0.3s ease;
+        }
+
+        .billiard-btn:hover .billiard-icon {
+            transform: rotate(360deg);
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .skills-list li {
+            background: linear-gradient(135deg, var(--light-green), rgba(25, 135, 84, 0.1));
+            border-radius: 25px;
+            padding: 10px 20px;
+            color: var(--dark-green);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(25, 135, 84, 0.2);
+        }
+
+        .skills-list li:hover {
+            transform: translateY(-3px) scale(1.05);
+            background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+            color: white;
+            box-shadow: var(--shadow-soft);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Alert Styling */
+        .alert {
+            border-radius: 15px;
+            border: none;
+            padding: 20px;
+            margin-top: 20px;
+            font-weight: 500;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, var(--light-green), rgba(25, 135, 84, 0.1));
+            color: var(--dark-green);
+            border-left: 5px solid var(--primary-green);
+        }
+
+        .alert-warning {
+            background: linear-gradient(135deg, #fff3cd, rgba(255, 193, 7, 0.1));
+            color: #856404;
+            border-left: 5px solid #ffc107;
+        }
+
+        .alert-danger {
+            background: linear-gradient(135deg, #f8d7da, rgba(220, 53, 69, 0.1));
+            color: #721c24;
+            border-left: 5px solid #dc3545;
+        }
+
+        /* Contact Links */
+        .contact-links a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-links a:hover {
+            color: var(--dark-green);
+            transform: translateX(5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .section-card {
+                padding: 25px;
+                margin-bottom: 30px;
+            }
+
+            .carousel-item img {
+                height: 300px;
+            }
+
+            .skills-list {
+                justify-content: center;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(25, 135, 84, 0.3);
+            border-top: 4px solid var(--primary-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Floating Billiard Balls -->
+    <div class="floating-balls">
+        <div class="ball ball-1"></div>
+        <div class="ball ball-2"></div>
+        <div class="ball ball-3"></div>
+        <div class="ball ball-4"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-8ball me-2"></i>K.A HOME BILLIARD
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">
+                            <i class="fas fa-home me-1"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#booking">
+                            <i class="fas fa-calendar-check me-1"></i>Booking
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#profile">
+                            <i class="fas fa-user me-1"></i>Profile
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section fade-in" id="home">
+        <div class="container">
+            <h1><i class="fas fa-8ball me-3"></i>K.A HOME BILLIARD</h1>
+            <p class="lead">Booking Meja & Pemesanan Online, serta Portofolio Kahfi Alfarize</p>
+            <a href="#booking" class="billiard-btn mt-3">
+                <i class="fas fa-play-circle billiard-icon"></i>
+                Booking Sekarang
+            </a>
+        </div>
+    </section>
+
+    <div class="container">
+        <div id="billiardCarousel" class="carousel slide fade-in" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#billiardCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#billiardCarousel" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#billiardCarousel" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#billiardCarousel" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div
+                        style="background: linear-gradient(135deg, #1a472a, #2d5a3d); height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            <i class="fas fa-lightbulb" style="font-size: 80px; color: #ffd700; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><i class="fas fa-lightbulb me-2"></i>Suasana Ruang Billiard Yang Nyaman</h5>
+                        <p>Pencahayaan yang tepat dan suasana yang nyaman untuk konsentrasi maksimal dalam bermain.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div
+                        style="background: radial-gradient(circle, #1a472a, #0f2415); height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 20px;">
+                            <div
+                                style="width: 60px; height: 60px; border-radius: 50%; background: #ff4444; border: 3px solid #fff;">
+                            </div>
+                            <div
+                                style="width: 60px; height: 60px; border-radius: 50%; background: #4444ff; border: 3px solid #fff;">
+                            </div>
+                            <div
+                                style="width: 60px; height: 60px; border-radius: 50%; background: #ffff44; border: 3px solid #fff;">
+                            </div>
+                            <div
+                                style="width: 60px; height: 60px; border-radius: 50%; background: #44ff44; border: 3px solid #fff;">
+                            </div>
+                            <div
+                                style="width: 60px; height: 60px; border-radius: 50%; background: #ff44ff; border: 3px solid #fff;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><i class="fas fa-circle me-2"></i>Peralatan Billiard Lengkap</h5>
+                        <p>Bola billiard dan stick berkualitas untuk memastikan permainan yang fair dan menyenangkan.
+                        </p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div
+                        style="background: linear-gradient(45deg, #8B4513, #A0522D); height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            <i class="fas fa-utensils" style="font-size: 80px; color: #ffd700; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><i class="fas fa-utensils me-2"></i>Menu Makanan & Minuman Lezat</h5>
+                        <p>Nikmati berbagai pilihan makanan dan minuman favorit sambil bermain billiard.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div
+                        style="background: linear-gradient(45deg, #2F4F4F, #708090); height: 500px; display: flex; align-items: center; justify-content: center; position: relative;">
+                        <div
+                            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+                            <i class="fas fa-users" style="font-size: 80px; color: #ffd700; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                    <div class="carousel-caption d-none d-md-block">
+                        <h5><i class="fas fa-users me-2"></i>Komunitas Billiard Yang Solid</h5>
+                        <p>Bergabunglah dengan komunitas pecinta billiard dan nikmati turnamen reguler.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#billiardCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#billiardCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Booking Section -->
+    <div class="container" id="booking">
+        <div class="section-card fade-in-left">
+            <h2 class="section-title">
+                <i class="fas fa-table-tennis me-3"></i>Booking Meja
+            </h2>
+            <form onsubmit="return handleBooking(event)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="nama" placeholder="Nama Lengkap" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="datetime-local" class="form-control" id="waktu" required>
+                    </div>
+                </div>
+                <select class="form-control" id="meja" required>
+                    <option value="">Pilih Meja</option>
+                    <option value="1">Meja 1 - Premium</option>
+                    <option value="2">Meja 2 - Standard</option>
+                    <option value="3">Meja 3 - VIP</option>
+                </select>
+                <div class="text-center">
+                    <button type="submit" class="billiard-btn">
+                        <i class="fas fa-calendar-check billiard-icon"></i>
+                        Booking Sekarang
+                    </button>
+                </div>
+            </form>
+            <div id="bookingResult"></div>
+        </div>
+
+        <div class="section-card fade-in-right">
+            <h2 class="section-title">
+                <i class="fas fa-hamburger me-3"></i>Pesan Menu
+            </h2>
+            <form onsubmit="return handleOrder(event)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" id="namaMenu" placeholder="Nama Pemesan" required>
+                    </div>
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" id="jumlah" placeholder="Jumlah" min="1" required>
+                    </div>
+                </div>
+                <select class="form-control" id="menu" required>
+                    <option value="">Pilih Menu</option>
+                    <option value="es-teh">🧊 Minuman - Es Teh (Rp 5.000)</option>
+                    <option value="mie-goreng">🍜 Makanan - Mie Goreng (Rp 15.000)</option>
+                    <option value="kentang-goreng">🍟 Cemilan - Kentang Goreng (Rp 10.000)</option>
+                    <option value="kopi">☕ Minuman - Kopi (Rp 8.000)</option>
+                    <option value="nasi-goreng">🍛 Makanan - Nasi Goreng (Rp 18.000)</option>
+                </select>
+                <div class="text-center">
+                    <button type="submit" class="billiard-btn">
+                        <i class="fas fa-shopping-cart billiard-icon"></i>
+                        Pesan Sekarang
+                    </button>
+                </div>
+            </form>
+            <div id="orderResult"></div>
+        </div>
+    </div>
+
+    <!-- Portfolio Section -->
+    <div class="container" id="profile">
+        <div class="section-card fade-in">
+            <h2 class="section-title">
+                <i class="fas fa-user-circle me-3"></i>Portofolio Kahfi Alfarize
+            </h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <p class="lead">Halo! Saya Kahfi Alfarize, mahasiswa semester 2 di STTI Tanjungpinang. Saya memiliki
+                        ketertarikan besar pada dunia teknologi dan software development.</p>
+
+                    <h4 class="mt-4 mb-3"><i class="fas fa-cogs me-2"></i>Keahlian Saya:</h4>
+                    <ul class="skills-list">
+                        <li><i class="fab fa-microsoft me-1"></i>Microsoft Word</li>
+                        <li><i class="fas fa-table me-1"></i>Excel</li>
+                        <li><i class="fas fa-database me-1"></i>Access</li>
+                        <li><i class="fas fa-code me-1"></i>Coding Apps</li>
+                        <li><i class="fab fa-html5 me-1"></i>HTML/CSS</li>
+                        <li><i class="fab fa-js me-1"></i>JavaScript</li>
+                    </ul>
+
+                    <h4 class="mt-4 mb-3"><i class="fas fa-project-diagram me-2"></i>Project Saya:</h4>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="fas fa-globe text-success me-2"></i>Website CV Portofolio</li>
+                        <li class="mb-2"><i class="fas fa-shopping-bag text-primary me-2"></i>Website Toko Online</li>
+                        <li class="mb-2"><i class="fas fa-gamepad text-warning me-2"></i>Website Rumah Billiard</li>
+                        <li class="mb-2"><i class="fas fa-spinner text-info me-2"></i>Mini Project lainnya (On Progress)
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="bg-light p-4 rounded-3">
+                        <i class="fas fa-user-circle" style="font-size: 100px; color: var(--primary-green);"></i>
+                        <h5 class="mt-3">Kahfi Alfarize</h5>
+                        <p class="text-muted">Mahasiswa STTI Tanjungpinang</p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4">
+
+            <h4 class="mb-3"><i class="fas fa-phone me-2"></i>Hubungi Saya:</h4>
+            <div class="contact-links">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <a href="mailto:kahfialfarize18@gmail.com">
+                            <i class="fas fa-envelope me-2"></i>kahfialfarize18@gmail.com
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="https://instagram.com/kahfialfarize" target="_blank">
+                            <i class="fab fa-instagram me-2"></i>@kahfialfarize
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="https://wa.me/6281234567890" target="_blank">
+                            <i class="fab fa-whatsapp me-2"></i>WhatsApp
+                        </a>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <a href="https://github.com/kahfialfarize" target="_blank">
+                            <i class="fab fa-github me-2"></i>GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-8ball me-2"></i>K.A HOME BILLIARD</h5>
+                    <p class="mb-0">Tempat bermain billiard terbaik dengan suasana nyaman</p>
+                </div>
+                <div class="col-md-6">
+                    <h6>Jam Operasional</h6>
+                    <p class="mb-0">
+                        <i class="fas fa-clock me-1"></i>
+                        Senin - Minggu: 10:00 - 22:00
+                    </p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <p class="mb-0">© 2024 K.A HOME BILLIARD. Developed by Kahfi Alfarize</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Initialize animations and interactions
+        document.addEventListener('DOMContentLoaded', function () {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Active navigation link update
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section, div[id]');
+
+            function updateActiveNav() {
+                const scrollPos = window.scrollY + 100;
+                sections.forEach(section => {
+                    const top = section.offsetTop;
+                    const bottom = top + section.offsetHeight;
+                    const id = section.getAttribute('id');
+
+                    if (scrollPos >= top && scrollPos < bottom) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${id}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNav);
+
+            // Initialize carousel with enhanced options
+            const carousel = new bootstrap.Carousel('#billiardCarousel', {
+                interval: 4000,
+                pause: 'hover',
+                ride: 'carousel',
+                wrap: true
+            });
+
+            // Add touch swipe support for mobile
+            let startX = 0;
+            let endX = 0;
+            const carouselElement = document.getElementById('billiardCarousel');
+
+            carouselElement.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+
+            carouselElement.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                if (startX > endX + 50) {
+                    carousel.next();
+                } else if (startX < endX - 50) {
+                    carousel.prev();
+                }
+            });
+
+            // Set minimum datetime to current time
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('waktu').min = now.toISOString().slice(0, 16);
+        });
+
+        // Enhanced booking logic with animations
+        function handleBooking(event) {
+            event.preventDefault();
+            const resultDiv = document.getElementById("bookingResult");
+
+            // Show loading animation
+            resultDiv.innerHTML = '<div class="loading-spinner"></div>';
+
+            setTimeout(() => {
+                const nama = document.getElementById("nama").value;
+                const meja = document.getElementById("meja").value;
+                const waktu = document.getElementById("waktu").value;
+                const waktuBooking = new Date(waktu);
+
+                // Simulate availability check
+                const isAvailable = Math.random() > 0.3;
+
+                if (isAvailable) {
+                    resultDiv.innerHTML = `
+                        <div class='alert alert-success'>
+                            <i class="fas fa-check-circle me-2"></i>
+                            <strong>Booking Berhasil!</strong><br>
+                            Atas nama: <strong>${nama}</strong><br>
+                            Meja: <strong>${getMejaName(meja)}</strong><br>
+                            Waktu: <strong>${waktuBooking.toLocaleString('id-ID')}</strong><br>
+                            <small class="mt-2 d-block">
+                                <i class="fas fa-info-circle me-1"></i>
+                                Harap datang 15 menit sebelum waktu booking
+                            </small>
+                        </div>
+                    `;
+
+                    // Generate booking ID
+                    const bookingId = 'KB' + Date.now().toString().slice(-6);
+                    setTimeout(() => {
+                        resultDiv.innerHTML += `
+                            <div class="alert alert-info mt-2">
+                                <i class="fas fa-ticket-alt me-2"></i>
+                                <strong>ID Booking: ${bookingId}</strong>
+                                <br><small>Simpan ID ini untuk referensi</small>
+                            </div>
+                        `;
+                    }, 1000);
+                } else {
+                    const waitTime = Math.floor(Math.random() * 60) + 15;
+                    resultDiv.innerHTML = `
+                        <div class='alert alert-warning'>
+                            <i class="fas fa-clock me-2"></i>
+                            <strong>Meja Sedang Terisi</strong><br>
+                            ${getMejaName(meja)} sedang digunakan.<br>
+                            Estimasi tunggu: <strong>${waitTime} menit</strong><br>
+                            <small class="mt-2 d-block">
+                                <i class="fas fa-list me-1"></i>
+                                Anda telah masuk dalam daftar tunggu
+                            </small>
+                        </div>
+                    `;
+                }
+
+                // Reset form
+                event.target.reset();
+            }, 1500);
+        }
+
+        // Enhanced order logic with pricing
+        function handleOrder(event) {
+            event.preventDefault();
+            const resultDiv = document.getElementById("orderResult");
+
+            // Show loading animation
+            resultDiv.innerHTML = '<div class="loading-spinner"></div>';
+
+            setTimeout(() => {
+                const nama = document.getElementById("namaMenu").value;
+                const menu = document.getElementById("menu").value;
+                const jumlah = parseInt(document.getElementById("jumlah").value);
+
+                if (menu && jumlah > 0) {
+                    const menuData = getMenuData(menu);
+                    const total = menuData.price * jumlah;
+
+                    resultDiv.innerHTML = `
+                        <div class='alert alert-success'>
+                            <i class="fas fa-shopping-cart me-2"></i>
+                            <strong>Pesanan Diterima!</strong><br>
+                            Atas nama: <strong>${nama}</strong><br>
+                            Pesanan: <strong>${menuData.name}</strong><br>
+                            Jumlah: <strong>${jumlah}</strong><br>
+                            Total: <strong>Rp ${total.toLocaleString('id-ID')}</strong><br>
+                            <small class="mt-2 d-block">
+                                <i class="fas fa-clock me-1"></i>
+                                Estimasi waktu: 10-15 menit
+                            </small>
+                        </div>
+                    `;
+
+                    // Generate order ID
+                    const orderId = 'KO' + Date.now().toString().slice(-6);
+                    setTimeout(() => {
+                        resultDiv.innerHTML += `
+                            <div class="alert alert-info mt-2">
+                                <i class="fas fa-receipt me-2"></i>
+                                <strong>ID Pesanan: ${orderId}</strong>
+                                <br><small>Tunjukkan ID ini saat mengambil pesanan</small>
+                            </div>
+                        `;
+                    }, 1000);
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class='alert alert-danger'>
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Data Tidak Lengkap!</strong><br>
+                            Mohon isi semua data pesanan dengan benar.
+                        </div>
+                    `;
+                }
+
+                // Reset form
+                event.target.reset();
+            }, 1500);
+        }
+
+        // Helper functions
+        function getMejaName(mejaValue) {
+            const mejaNames = {
+                '1': 'Meja 1 - Premium',
+                '2': 'Meja 2 - Standard',
+                '3': 'Meja 3 - VIP'
+            };
+            return mejaNames[mejaValue] || 'Meja ' + mejaValue;
+        }
+
+        function getMenuData(menuValue) {
+            const menuData = {
+                'es-teh': { name: 'Es Teh', price: 5000 },
+                'mie-goreng': { name: 'Mie Goreng', price: 15000 },
+                'kentang-goreng': { name: 'Kentang Goreng', price: 10000 },
+                'kopi': { name: 'Kopi', price: 8000 },
+                'nasi-goreng': { name: 'Nasi Goreng', price: 18000 }
+            };
+            return menuData[menuValue] || { name: 'Menu', price: 0 };
+        }
+
+        // Enhanced scroll animations
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+            elements.forEach((element, index) => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < window.innerHeight - elementVisible) {
+                    setTimeout(() => {
+                        element.classList.add('visible');
+                    }, index * 100);
+                }
+            });
+        }
+
+        // Throttled scroll event
+        let ticking = false;
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    revealOnScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick);
+        window.addEventListener('DOMContentLoaded', revealOnScroll);
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero-section');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add hover effects to cards
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add typing effect to hero title (optional enhancement)
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Easter egg: Konami code
+        let konamiCode = [];
+        const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konamiSequence.length) {
+                konamiCode.shift();
+            }
+
+            if (konamiCode.join(',') === konamiSequence.join(',')) {
+                document.body.style.animation = 'rainbow 2s infinite';
+                setTimeout(() => {
+                    document.body.style.animation = '';
+                }, 10000);
+            }
+        });
+
+        // Add rainbow animation for easter egg
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rainbow {
+                0% { filter: hue-rotate(0deg); }
+                100% { filter: hue-rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+
+</html>
